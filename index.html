@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maxwell | Professional Portfolio</title>
+  <style>
+    :root {
+      --color-primary: #1e3a8a; /* deep corporate navy blue */
+      --color-text: #1f2937; /* charcoal dark grey */
+      --color-bg: #f8fafc; /* crisp light background */
+      --color-accent-bg: #dbeafe; /* light blue accent background */
+      --color-card-bg: #ffffff; /* white card background */
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b1535, var(--color-primary));
+      color: #e5e7eb;
+      padding: 2.5rem 1.25rem 2.75rem;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.35);
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .name-tagline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .name-tagline h1 {
+      font-size: 2.4rem;
+      margin: 0;
+      letter-spacing: 0.04em;
+    }
+
+    .name-tagline p {
+      margin: 0;
+      font-size: 1rem;
+      max-width: 720px;
+      color: #d1d5db;
+    }
+
+    .contact-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-chip {
+      background: rgba(15, 23, 42, 0.55);
+      border-radius: 999px;
+      padding: 0.3rem 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid rgba(191, 219, 254, 0.35);
+    }
+
+    .contact-chip strong {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .nav-links {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(191, 219, 254, 0.35);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(15, 23, 42, 0.75);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto 4rem;
+      padding: 0 1.25rem 2rem;
+    }
+
+    section {
+      background: var(--color-card-bg);
+      border-radius: 10px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+      border: 1px solid #d1d5db;
+    }
+
+    h2 {
+      color: var(--color-primary);
+      margin-top: 0;
+      margin-bottom: 0.85rem;
+      font-weight: 700;
+      font-size: 1.55rem;
+      border-bottom: 3px solid var(--color-primary);
+      padding-bottom: 0.35rem;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    p {
+      margin-top: 0.35rem;
+      margin-bottom: 0.7rem;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+      margin-top: 0.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    ul li {
+      margin-bottom: 0.45rem;
+    }
+
+    .core-competencies ul {
+      column-count: 2;
+      column-gap: 2.5rem;
+      list-style-type: disc;
+    }
+
+    .job,
+    .education-item {
+      margin-bottom: 1.75rem;
+    }
+
+    .job-header,
+    .education-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem;
+    }
+
+    .job-title,
+    .education-degree {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--color-primary);
+    }
+
+    .job-company,
+    .education-institution {
+      font-weight: 500;
+      font-style: italic;
+      color: #374151;
+      margin-left: 0.25rem;
+    }
+
+    .job-dates,
+    .education-dates {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    .job ul,
+    .education-item ul {
+      padding-left: 1.4rem;
+      margin-top: 0.3rem;
+      margin-bottom: 0;
+    }
+
+    .tech-skills ul {
+      list-style-type: disc;
+      column-count: 2;
+      column-gap: 2.5rem;
+      padding-left: 1.25rem;
+    }
+
+    .highlight-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .highlight-card {
+      background-color: var(--color-accent-bg);
+      border-left: 5px solid var(--color-primary);
+      padding: 1rem 1.25rem;
+      flex: 1 1 260px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.18);
+    }
+
+    .highlight-card strong {
+      display: block;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+      color: var(--color-primary);
+    }
+
+    .highlight-card p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: #1f2937;
+    }
+
+    .section-intro {
+      font-size: 0.95rem;
+      color: #4b5563;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1.25rem 2.5rem;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    footer a {
+      color: var(--color-primary);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1.8rem 1.25rem 2.1rem;
+      }
+      section {
+        padding: 1.5rem 1.3rem;
+      }
+      .core-competencies ul,
+      .tech-skills ul {
+        column-count: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .job-header,
+      .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .job-dates,
+      .education-dates {
+        margin-left: 0;
+      }
+      .nav-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="name-tagline">
+        <h1>Maxwell</h1>
+        <p>
+          Senior applied mathematician, research scientist, and defense principal investigator
+          focused on aerospace, astrodynamics, and high-impact government R&amp;D programs.
+        </p>
+      </div>
+      <div class="contact-strip">
+        <span class="contact-chip">
+          <strong>Location:</strong> Texas, United States
+        </span>
+        <span class="contact-chip">
+          <strong>Phone:</strong> +1 (302) 465-1443
+        </span>
+        <span class="contact-chip">
+          <strong>Email:</strong>
+          <a href="mailto:jorammaina42@gmail.com">jorammaina42@gmail.com</a>
+        </span>
+      </div>
+      <nav class="nav-links" aria-label="Section navigation">
+        <a href="#summary-title">Summary</a>
+        <a href="#competencies-title">Core Competencies</a>
+        <a href="#experience-title">Experience</a>
+        <a href="#education-title">Education</a>
+        <a href="#skills-title">Technical Skills</a>
+        <a href="#achievements-title">Achievements</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section aria-labelledby="summary-title">
+      <h2 id="summary-title">Professional Summary</h2>
+      <p>
+        Results-driven research scientist, principal investigator, and applied mathematician with expertise spanning aerospace, defense R&amp;D, astrodynamics, mathematical modeling, technical writing, and cross-functional leadership. Proven success securing government funding, leading high-impact innovation programs, and translating advanced technical concepts into operational solutions. Experienced in algorithm development, simulation, analytics, academic instruction, and executive-level communication. Combines deep quantitative training (PhD Applied Mathematics, MBA) with practical leadership experience across startups, defense programs, consulting, and higher education.
+      </p>
+
+      <div class="highlight-cards" aria-label="Key milestones">
+        <div class="highlight-card">
+          <strong>$1.54M+ Federal R&amp;D Funding</strong>
+          <p>
+            Secured $1.54M+ total federal contract funding through SBIR programs, including $140,000 Phase I and $1.4 million Phase II Navy awards as Principal Investigator.
+          </p>
+        </div>
+        <div class="highlight-card">
+          <strong>PhD Defense &amp; Advanced Training</strong>
+          <p>
+            Completed and defended PhD in Applied Mathematics with a 3.9 GPA, integrating time scale calculus and fractional calculus, and complemented by an MBA in General Business.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="competencies-title" class="core-competencies">
+      <h2 id="competencies-title">Core Competencies</h2>
+      <p class="section-intro">
+        Core domains spanning applied mathematics, aerospace and defense R&amp;D, technical leadership, and education.
+      </p>
+      <ul>
+        <li>Research &amp; Development (R&amp;D)</li>
+        <li>Technical Program Leadership</li>
+        <li>SBIR/STTR Proposal Development</li>
+        <li>Mathematical Modeling &amp; Simulation</li>
+        <li>Astrodynamics &amp; Space Domain Awareness</li>
+        <li>Data Analysis &amp; Predictive Modeling</li>
+        <li>Scientific &amp; Technical Writing</li>
+        <li>Government / DoD Contracting</li>
+        <li>Cross-Functional Team Management</li>
+        <li>Algorithm Development</li>
+        <li>Python / Java / Numerical Computing</li>
+        <li>Executive Presentations</li>
+        <li>Process Optimization</li>
+        <li>Higher Education Instruction</li>
+        <li>Strategic Planning</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="experience-title">
+      <h2 id="experience-title">Professional Experience</h2>
+
+      <article class="job" aria-label="Independent Contractor at Casey J. Mills Consulting">
+        <div class="job-header">
+          <span class="job-title">Independent Contractor</span>
+          <span class="job-company">Casey J. Mills Consulting | Remote</span>
+          <time class="job-dates" datetime="2023-08">Aug 2023 – Present</time>
+        </div>
+        <ul>
+          <li>Deliver consulting services focused on research, technical writing, and advanced analytical support for clients in technology-driven industries.</li>
+          <li>Produce high-quality scientific, technical, and economic articles for publication and executive audiences.</li>
+          <li>Supported an AI-focused space applications startup as researcher and subject matter expert.</li>
+          <li>Translate complex technical topics into clear, persuasive narratives for investors, executives, and technical stakeholders.</li>
+          <li>Conduct market, technology, and scientific research across multiple sectors.</li>
+        </ul>
+      </article>
+
+      <article class="job" aria-label="Principal Investigator at SpyDar Sensors Inc">
+        <div class="job-header">
+          <span class="job-title">Principal Investigator</span>
+          <span class="job-company">SpyDar Sensors Inc | Remote</span>
+          <time class="job-dates" datetime="2024-05">May 2024 – Jul 2025</time>
+        </div>
+        <ul>
+          <li>Served as Principal Investigator for Navy SBIR Phase I Topic N242-083.</li>
+          <li>Authored winning proposal securing $140,000 Phase I funding.</li>
+          <li>Led R&amp;D for a novel launch and recovery system for sea-based operations.</li>
+          <li>Secured $1.4 million Phase II contract award through technical performance and strategic alignment.</li>
+          <li>Managed project execution, schedules, reporting, team coordination, compliance, and stakeholder communication.</li>
+          <li>Led weekly technical reviews and interfaced directly with Navy personnel and federal TPOC representatives.</li>
+          <li>Delivered live demonstrations and technical presentations to Navy leadership at NAWCAD Lakehurst.</li>
+          <li>Oversaw modeling, simulation, and conceptual system validation efforts.</li>
+        </ul>
+      </article>
+
+      <article class="job" aria-label="Research Scientist at Slingshot Aerospace">
+        <div class="job-header">
+          <span class="job-title">Research Scientist</span>
+          <span class="job-company">Slingshot Aerospace | Austin, Texas</span>
+          <time class="job-dates" datetime="2022-05">May 2022 – May 2023</time>
+        </div>
+        <ul>
+          <li>Researched advanced mathematical methods and algorithms for space domain awareness and orbital sustainability applications.</li>
+          <li>Developed innovative concepts in astrodynamics and space object tracking.</li>
+          <li>Prototyped software solutions for integration into commercial products.</li>
+          <li>Produced technical documentation for engineering teams and executive leadership.</li>
+          <li>Evaluated emerging technologies and implementation pathways for operational use.</li>
+        </ul>
+      </article>
+
+      <article class="job" aria-label="Postdoctoral Astrodynamics Intern at Slingshot Aerospace">
+        <div class="job-header">
+          <span class="job-title">Postdoctoral Astrodynamics Intern</span>
+          <span class="job-company">Slingshot Aerospace</span>
+          <time class="job-dates" datetime="2022-02">Feb 2022 – May 2022</time>
+        </div>
+        <ul>
+          <li>Supported astrodynamics research and software prototyping initiatives.</li>
+          <li>Applied mathematical modeling techniques to orbital mechanics challenges.</li>
+          <li>Contributed to internal research deliverables and product development efforts.</li>
+        </ul>
+      </article>
+
+      <article class="job" aria-label="Graduate Researcher & Instructor at Texas University">
+        <div class="job-header">
+          <span class="job-title">Graduate Researcher &amp; Instructor</span>
+          <span class="job-company">Texas University</span>
+          <time class="job-dates" datetime="2018-08">Aug 2018 – Dec 2021</time>
+        </div>
+        <ul>
+          <li>Developed a novel mathematical framework for modeling prostate cancer treatment dynamics.</li>
+          <li>Improved time-series treatment representation accuracy by more than 10%.</li>
+          <li>Built data-cleaning and analysis tools for complex oncology clinical trial datasets.</li>
+          <li>Unified discrete fractional calculus and time scale calculus in dissertation research.</li>
+          <li>Completed and defended PhD dissertation successfully.</li>
+          <li>Designed and taught undergraduate mathematics courses: Contemporary Mathematics, Business Calculus, Calculus II, Linear Algebra.</li>
+          <li>Created exams, presentations, assignments, and grading systems.</li>
+          <li>Held office hours and mentored students with varied academic backgrounds.</li>
+        </ul>
+      </article>
+
+      <article class="job" aria-label="Outreach Instructor at Texas University">
+        <div class="job-header">
+          <span class="job-title">Outreach Instructor</span>
+          <span class="job-company">Texas University | Lubbock, Texas</span>
+          <time class="job-dates" datetime="2018-06">Jun 2018 – Jul 2019</time>
+        </div>
+        <ul>
+          <li>Prepared underrepresented and first-generation students for college STEM pathways.</li>
+          <li>Developed and taught pre-college mathematics curriculum, including introductory linear algebra.</li>
+          <li>Delivered instruction to student cohorts ages 13–15 during summer preparatory programs.</li>
+        </ul>
+      </article>
+
+      <article class="job" aria-label="Teaching Assistant at Texas University">
+        <div class="job-header">
+          <span class="job-title">Teaching Assistant</span>
+          <span class="job-company">Texas University | Lubbock, Texas</span>
+          <time class="job-dates" datetime="2017-08">Aug 2017 – May 2018</time>
+        </div>
+        <ul>
+          <li>Assisted with mathematics instruction and student performance evaluation.</li>
+          <li>Provided tutoring, grading, and academic feedback.</li>
+        </ul>
+      </article>
+
+      <article class="job" aria-label="Outreach Coordinator at Texas University Department of Mathematics & Statistics">
+        <div class="job-header">
+          <span class="job-title">Outreach Coordinator</span>
+          <span class="job-company">Texas University – Department of Mathematics &amp; Statistics</span>
+          <time class="job-dates" datetime="2016-11">Nov 2016 – May 2017</time>
+        </div>
+        <ul>
+          <li>Supported outreach and engagement initiatives.</li>
+          <li>Worked with the Lazarus Lab for Mathematical Computing on departmental projects.</li>
+        </ul>
+      </article>
+
+      <article class="job" aria-label="Undergraduate Research Assistant at Texas University Department of Physics">
+        <div class="job-header">
+          <span class="job-title">Undergraduate Research Assistant</span>
+          <span class="job-company">Texas University – Department of Physics</span>
+          <time class="job-dates" datetime="2014-10">Oct 2014 – Dec 2016</time>
+        </div>
+        <ul>
+          <li>Contributed to HELADO Observatory research initiatives.</li>
+          <li>Worked in high-performance computing environments.</li>
+          <li>Developed Cherenkov Ring Finding algorithms and supported data acquisition systems.</li>
+          <li>Collaborated with faculty, postdoctoral researchers, and student teams.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section aria-labelledby="education-title">
+      <h2 id="education-title">Education</h2>
+
+      <article class="education-item" aria-label="Doctor of Philosophy in Applied Mathematics">
+        <div class="education-header">
+          <span class="education-degree">Doctor of Philosophy (PhD), Applied Mathematics</span>
+          <time class="education-dates" datetime="2019-2021">2019 – 2021</time>
+        </div>
+        <p><strong>Texas University</strong> | GPA: 3.9</p>
+        <p><em>Dissertation:</em> A New Approach to Modeling Intermittent Androgen Deprivation Therapy using Time Scale Calculus and Fractional Calculus</p>
+      </article>
+
+      <article class="education-item" aria-label="Master of Business Administration">
+        <div class="education-header">
+          <span class="education-degree">Master of Business Administration (MBA), General Business</span>
+          <time class="education-dates" datetime="2017-2018">2017 – 2018</time>
+        </div>
+        <p><strong>Texas University – Rawls College of Business</strong> | GPA: 3.7</p>
+        <p><em>Focus Areas:</em> Finance, Economics, Strategy, Analytics, Marketing, Management, Information Technology</p>
+      </article>
+
+      <article class="education-item" aria-label="Master of Science in Mathematics">
+        <div class="education-header">
+          <span class="education-degree">Master of Science (MS), Mathematics</span>
+          <time class="education-dates" datetime="2017-2019">2017 – 2019</time>
+        </div>
+        <p><strong>Texas University</strong> | GPA: 3.7</p>
+        <p><em>Coursework:</em> Optimization, Numerical Analysis, Differential Equations, Data Science, Biomathematics</p>
+      </article>
+
+      <article class="education-item" aria-label="Bachelor of Science in Mathematics with Minor in Physics">
+        <div class="education-header">
+          <span class="education-degree">Bachelor of Science, Mathematics (Minor: Physics)</span>
+          <time class="education-dates" datetime="2014-2017">2014 – 2017</time>
+        </div>
+        <p><strong>Texas University</strong> | GPA: 3.87</p>
+        <p>Graduated Magna Cum Laude with Honors</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="skills-title" class="tech-skills">
+      <h2 id="skills-title">Technical Skills</h2>
+      <ul>
+        <li>Programming: Python, Java, Numerical Computing, Algorithm Prototyping</li>
+        <li>Mathematics: Optimization, Differential Equations, Modeling, Statistics, Fractional Calculus</li>
+        <li>Tools: Data Analysis Platforms, Simulation Tools, Technical Documentation Suites</li>
+        <li>Business: Strategic Analysis, Budgeting, Project Planning, Stakeholder Management</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="achievements-title">
+      <h2 id="achievements-title">Selected Achievements</h2>
+      <ul>
+        <li>Secured $1.54M+ total federal contract funding through SBIR programs.</li>
+        <li>Led defense innovation efforts with direct Navy engagement.</li>
+        <li>Published and prepared technical/scientific manuscripts across multiple industries.</li>
+        <li>Combined advanced mathematics expertise with executive-level business training.</li>
+        <li>Built successful career across academia, aerospace, consulting, and defense sectors.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    Deployed as a static single-page portfolio. To update this site, edit this HTML file and redeploy via your chosen platform.
+  </footer>
+</body>
+</html>
